@@ -1,0 +1,199 @@
+@import "_variables";
+@import "_media-queries";
+
+@mixin mx-auto {
+  margin: {
+   left: auto;
+   right: auto;
+  }
+}
+@mixin pseudo($display: block, $pos: absolute, $content: '', $size: true){
+  content: $content;
+  display: $display;
+  position: $pos;
+  @if $size {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+   &:before {
+    @include pseudo($pos: relative);
+    width: 100%;
+    padding-top: $padding;
+   }
+  } @else {
+   padding-top: $padding;
+  }
+}
+@mixin absolute($width: false) {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  @if $width {
+    width: 100%;
+  }
+}
+
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin objectFit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+@mixin background($repeat: no-repeat, $position: center center, $size: cover) {
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin textInherit($font-size: inherit, $font-weight: inherit, $font-style: inherit, $color: inherit, $line-height: inherit,$word-wrap: normal) {
+  font: {
+    size: $font-size;
+    weight: $font-weight;
+    style: $font-style;
+  }
+  color: $color;
+  line-height: $line-height;
+  word-wrap: $word-wrap;
+}
+
+/*Media query for browsers*/
+@mixin media-IE {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+@mixin media-edge {
+  @supports (-ms-ime-align:auto) {
+    .selector {
+      property: value;
+    }
+    @content;
+  }
+}
+/*END Media query for browsers*/
+
+/*Функция, отвечающая за удаления единиц измерения в указании ширины родителя*/
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@mixin padding(
+  $parentWidth,     /*Ширина родителя*/
+
+  $pt: false,       /*Padding-top*/     /*Важно! Если нужно задать три разных значения, указывать необходимо все четыре в том же порядке.*/
+  $pr: false,       /*Padding-right*/   /* Пример: ($parentWidth, 25, 0, 15, 10)*/
+  $pb: false,       /*Padding-bottom*/
+  $pl: false,       /*Padding-left*/
+
+  $ptb: false,      /*Padding-top/bottom*/
+  $px: false,       /*Padding-left/right*/
+  $p: false         /*Padding-top/right/bottom/left*/
+) {
+
+  $parentWidth: strip-unit($parentWidth);
+
+  @if $pt {
+    padding-top: #{$pt / $parentWidth * 100%};
+  }
+  @if $pr {
+    padding-right: #{$pr / $parentWidth * 100%};
+  }
+  @if $pb {
+    padding-bottom: #{$pb / $parentWidth * 100%};
+  }
+  @if $pl {
+    padding-left: #{$pl / $parentWidth * 100%};
+  }
+  @if $ptb {
+    $ptb: #{$ptb / $parentWidth * 100%};
+    @each $top-bottom in top, bottom {
+      padding-#{$top-bottom}: $ptb;
+    }
+  }
+  @if $px {
+    $px: #{$px / $parentWidth * 100%};
+    @each $left-right in left, right {
+      padding-#{$left-right}: $px;
+    }
+  }
+  @if $p {
+    $p: #{$p / $parentWidth * 100%};
+    @each $all in top, right, bottom, left {
+      padding-#{$all}: $p;
+    }
+  }
+}
+
+@mixin margin(
+  $parentWidth: 0,
+  $mt: false,
+  $mr: false,
+  $mb: false,
+  $ml: false,
+  $mtb: false,
+  $m: false,
+  $mx: false
+) {
+
+  $parentWidth: strip-unit($parentWidth);
+
+  @if $mt {
+    margin-top: #{$mt / $parentWidth * 100%};
+  }
+  @if $mr {
+    margin-right: #{$mr / $parentWidth * 100%};
+  }
+  @if $mb {
+    margin-bottom: #{$mb / $parentWidth * 100%};
+  }
+  @if $ml {
+    margin-left: #{$ml / $parentWidth * 100%};
+  }
+  @if $mtb {
+    $mtb: #{$mtb / $parentWidth * 100%};
+    @each $top-bottom in top, bottom {
+      margin-#{$top-bottom}: $mtb;
+    }
+  }
+  @if $mx {
+    $mx: #{$mx / $parentWidth * 100%};
+    @each $left-right in left, right {
+      margin-#{$left-right}: $mx;
+    }
+  }
+  @if $m {
+    $m: #{$m / $parentWidth * 100%};
+    @each $all in top, right, bottom, left {
+      margin-#{$all}: $m;
+    }
+  }
+}

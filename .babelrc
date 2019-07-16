@@ -1,0 +1,12 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "targets": {
+          "browsers": ["last 2 versions", ">2.5%", "safari 7"]
+        },
+        "modules": false
+      }
+    ]
+  ]
+}

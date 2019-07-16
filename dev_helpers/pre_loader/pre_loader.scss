@@ -1,0 +1,32 @@
+
+.preloader {
+	position: fixed;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	bottom: 0;
+	background: #000;
+	z-index: 100000;
+	&-item {
+		&-gif {
+			height: 250px;
+			width: 250px;
+			background-image: url('../img/preloader.gif');
+			@include background();
+			@include mx-auto;
+		}
+		&-text {
+			text-align: center;
+			p {
+				font-size: 18px;
+				color: #fff;
+				line-height: 1em;
+				text-shadow: 1px 1px 10px rgba(#fff, .7);
+			}
+		}
+	}
+}

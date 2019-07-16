@@ -1,0 +1,46 @@
+{
+  "name": "gulp_fourth_temlate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ToT",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cheerio": "^0.6.3",
+    "gulp-csso": "^3.0.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-tinypng": "^1.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "braces": "^3.0.2",
+    "fstream": "^1.0.12",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.14",
+    "lodash.merge": "^4.6.2",
+    "lodash.mergewith": "^4.6.2",
+    "node.extend": "^2.0.2",
+    "static-eval": "^2.0.2",
+    "svgxuse": "^1.2.6",
+    "tar": "^4.4.10"
+  },
+  "optionalDependencies": {}
+}

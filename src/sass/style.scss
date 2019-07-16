@@ -1,0 +1,82 @@
+/* General needs */
+@import 'plug/rem';
+@import 'plug/media-queries';
+@import 'plug/mixins';
+@import '../../dev_helpers/rfs/rfs';
+/*END General needs */
+
+.m-cont {
+  margin-top: 100px;
+  button {
+    color: red;
+    font-size: rem(18px);
+    line-height: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid red;
+    background-color: #fff;
+    text-transform: uppercase;
+    padding: .5em 1.5em .4em;
+    transition: all .3s;
+    margin-bottom: 1em;
+    &:hover {
+      border-color: blue;
+      color: blue;
+    }
+  }
+  .m-text,
+  .m-video,
+  .m-youtube {
+    display: none;
+  }
+  .rutube {
+    display: none;
+  }
+  .vimeo {
+    display: none;
+  }
+}
+.m-text {
+  padding: 1rem;
+  p {}
+}
+
+.inset-text {
+  display: none;
+}
+.inset-btn {
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.res-text {
+  display: none;
+  padding: 1rem;
+}
+.foo {
+  max-width: 400px;
+  max-height: 600px;
+}
+
+.image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 100px;
+  img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    object-fit: cover;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    @include media-IE {
+      height: auto;
+    }
+  }
+}
+
+.html-src {
+  display: none;
+}
